@@ -1,0 +1,8 @@
+body {
+	width:600px;
+}
+#qunit-testrunner-toolbar,
+#qunit-userAgent,
+.test-source {
+	display: none;
+}
