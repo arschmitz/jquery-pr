@@ -7,7 +7,7 @@ Instalation
 =================
 
 to install the extension and use it you can download the latest stable packed version from
-http://uglymongrel.com/download/jquery-pr.crx
+http://uglymongrel.com/download/jquery-pr.crx ( you must right click and save file )
 
 once downloaded simply drag onto the extensions page in chrome settings.
 
