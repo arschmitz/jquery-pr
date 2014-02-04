@@ -17,7 +17,7 @@ asyncTest( "Fetched Authors", function(){
 					author.email = parts[ length -1 ].replace( /<|>/g, "" );
 					parts.splice( 0, 1 );
 					parts.splice( length - 2, 1);
-					author.name = parts.join( " " );
+					author.name = mimefuncs.quotedPrintableDecode( mimefuncs.mimeWordsDecode( parts.join( " " ) ) );
 					authors.push( author );
 				}
 			});
@@ -35,14 +35,14 @@ asyncTest( "Fetched Authors", function(){
 function validEmail ( email ) {
 	return validEmailRexex.test( email );
 }
-function validName ( name, entrys ) {
+function validName ( name, entrys, caa ) {
 	var length = name.split( " " ).length,
 		returnValue = true;
 
 	if( length <= 1 ){
 		if( entrys ) {
 			$.each( entrys, function( index , entry ) {
-				if( entry.gsx$nameconfirmation.$t === "" ) {
+				if( !caa && entry.gsx$nameconfirmation.$t === "" ) {
 					returnValue = false;
 				}
 			});
@@ -66,7 +66,7 @@ function fetchSpreadsheet( author, url, caa, found, claData ) {
 				} else if( !caa ) {
 					fetchSpreadsheet( author, caaAddress, true, true, data );
 				} else {
-					ok( validName( author.name, data.feed.entry ), "Name length valid or confimed" );
+					ok( validName( author.name, data.feed.entry, caa ), "Name length valid or confimed" );
 					ok( checkConfirmation( data.feed.entry ), "Confirmed signing" );
 					ok( false, "Name does not match " + author.name + " != " +
 						data.feed.entry[0].gsx$fullname.$t );
