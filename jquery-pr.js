@@ -4,11 +4,12 @@ var authors = [],
 	claAddress = "https://spreadsheets.google.com/feeds/list/0Aj5JJFjq9rZDdFJucXdGZXlRdVh2SUVUb2hsb0FBYkE/1/public/values?alt=json-in-script&sq=emailaddress%3D",
 	caaAddress = "https://spreadsheets.google.com/feeds/list/0AgyHrN8YnS0IdDdvWkJRaHFoQmRuazFhUm8zckViMHc/1/public/values?alt=json-in-script&sq=emailaddress%3D";
 
-asyncTest( "Fetched Authors", function(){
+asyncTest( "Fetched .patch file", function(){
 	expect( 1 );
 	chrome.tabs.getSelected( null, function( tab ) {
-		if( !/https:\/\/github.com\/jquery\/([a-zA-Z.])*\/pull\//.test( tab.url ) ) {
-			alert( "This tool only works on PR's for jquery foundation repos on github" );
+		if( !/https:\/\/github.com\/jquery\/[^\/]+\/pull\//.test( tab.url ) ) {
+			ok( false, "This tool only works on PR's for jquery foundation repos on github" );
+			start();
 		}
 		var url = tab.url.replace( /\/files$|\/commits$/, "" );
 		$.get( url + ".patch", function( data ) {
