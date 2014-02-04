@@ -29,7 +29,11 @@ asyncTest( "Fetched .patch file", function(){
 					author.email = parts[ length -1 ].replace( /<|>/g, "" );
 					parts.splice( 0, 1 );
 					parts.splice( length - 2, 1);
-					author.name = mimefuncs.quotedPrintableDecode( mimefuncs.mimeWordsDecode( parts.join( " " ) ) );
+					if( /UTF-8/.test( parts.join( " " ) ) ){
+						author.name = decodeURIComponent(parts.join( " " ).slice(10, -2).replace(/=/g, '%')).normalize( "NFC" );
+					} else {
+						author.name = parts.join( " " );
+					}
 					authors.push( author );
 					record = false;
 				}
@@ -116,7 +120,7 @@ function fetchSpreadsheet( author, url, caa, found, claData ) {
 function checkName ( author, sheet ) {
 	var match = false;
 	$.each( sheet, function( index, val ){
-		if( val.gsx$fullname.$t === author.name ) {
+		if( val.gsx$fullname.$t.normalize( "NFC" ) === author.name ) {
 			match = true;
 			return;
 		}
