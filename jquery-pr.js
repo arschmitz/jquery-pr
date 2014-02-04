@@ -6,8 +6,12 @@ var authors = [],
 
 asyncTest( "Fetched Authors", function(){
 	expect( 1 );
-	chrome.tabs.getSelected(null, function(tab) {
-		$.get( tab.url + ".patch", function( data ) {
+	chrome.tabs.getSelected( null, function( tab ) {
+		if( /files$|commits$/.test( tab.url ) ) {
+
+		}
+		var url = tab.url.replace( /\/files$|\/commits$/, "" );
+		$.get( url + ".patch", function( data ) {
 			$.each( data.split( "\n" ), function( i, val ){
 				if( /^From:/.test( val ) ){
 					var author = {},
