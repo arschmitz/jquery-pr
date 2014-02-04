@@ -137,16 +137,25 @@ function checkAuthors() {
 function getCommitMessages( patch ){
 	var record = false,
 		commits = [],
+		captureSecond = false,
 		commit;
 
 	$.each( patch.split( "\n" ), function( index, line ){
 		if( /^Subject\:/.test( line ) ){
+			if ( line.length >= 70 ) {
+				captureSecond = true;
+			}
 			commit = line;
 			record = true;
+		} else if( captureSecond && record && !/^---/.test( line ) ) {
+			commit += line;
+			captureSecond = false;
 		} else if( record && !/^---/.test( line ) ) {
+			captureSecond = false;
 			commit += "\n" + line;
 		} else if( record && /^---/.test( line ) ) {
 			record = false;
+			captureSecond = false;
 			commits.push( commit.replace( /Subject\:\s/, "" ).replace(/\[PATCH([0-9\/\s])*\](\s)*/, "") );
 		}
 	});
