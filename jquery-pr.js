@@ -7,8 +7,8 @@ var authors = [],
 asyncTest( "Fetched Authors", function(){
 	expect( 1 );
 	chrome.tabs.getSelected( null, function( tab ) {
-		if( /files$|commits$/.test( tab.url ) ) {
-
+		if( !/https:\/\/github.com\/jquery\/([a-zA-Z.])*\/pull\//.test( tab.url ) ) {
+			alert( "This tool only works on PR's for jquery foundation repos on github" );
 		}
 		var url = tab.url.replace( /\/files$|\/commits$/, "" );
 		$.get( url + ".patch", function( data ) {
