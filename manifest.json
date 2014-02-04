@@ -10,6 +10,7 @@
     "https://docs.google.com/",
     "tabs"
   ],
+  "options_page": "options.html",
   "icons": {
     "16": "images/pr-icon-16.png",
     "48": "images/pr-icon-48.png",

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery PR Check</title>
+  <link rel="stylesheet" href="resources/jquery.mobile.custom.structure.min.css">
+  <link rel="stylesheet" href="resources/jquery.mobile.custom.theme.min.css">
+  <link rel="stylesheet" href="resources/qunit-1.14.0.css">
+  <link rel="stylesheet" href="jquery-pr.css">
+  <script src="/resources/jquery-2.1.0.min.js"></script>
+  <script src="/resources/jquery.mobile.custom.min.js"></script>
+  <script src="options.js"></script>
+</head>
+<body>
+  <div id="qunit">
+  	<h1 id="qunit-header">
+  		<a>jQuery PR Check options</a>
+  		<h2 id="qunit-banner" class="qunit-pass"></h2>
+  		<ul id="qunit-tests">
+  			<li class="pass">
+  				<label for="checkCommit" class="option-label">Check commit message format</label>
+  				<input type="checkbox" name="check-commit" id="checkCommit" checked/>
+  			</li>
+  			<li class="pass">
+  				<label for="checkLines" class="option-label">Check line lengths</label>
+  				<input type="checkbox" name="checkLines" id="checkLines" checked/>
+  			</li>
+  		</ul>
+  	</h1>
+  </div>
+  <div id="qunit-fixture"></div>
+</body>
+</html>

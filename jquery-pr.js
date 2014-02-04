@@ -29,8 +29,12 @@ asyncTest( "Fetched Authors", function(){
 				ok( true, authors.length + " Authors Found" );
 				start();
 				checkAuthors();
-				checkCommits( data );
-				checkLineLength( data );
+				if( localStorage[ "checkCommit" ] === "true" ) {
+					checkCommits( data );
+				}
+				if( localStorage[ "checkLines" ] === "true" ) {
+					checkLineLength( data );
+				}
 			}
 		});
 	});

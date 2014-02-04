@@ -1,8 +1,20 @@
-body {
+body.pr-body {
 	width:600px;
 }
 #qunit-testrunner-toolbar,
 #qunit-userAgent,
 .test-source {
 	display: none;
+}
+.option-label{
+	font-size: 16px;
+	font-weight: bold;
+	display: inline-block;
+	margin-top: 10px;
+}
+.ui-flipswitch {
+	float:right;
+}
+.pass {
+	overflow: auto;
 }
