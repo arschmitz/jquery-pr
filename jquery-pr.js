@@ -11,12 +11,19 @@ asyncTest( "Fetched .patch file", function(){
 			ok( false, "This tool only works on PR's for jquery foundation repos on github" );
 			start();
 		}
-		var url = tab.url.replace( /\/files$|\/commits$/, "" );
+		var url = tab.url.replace( /\/files$|\/commits$/, "" ),
+			record = false;
 		$.get( url + ".patch", function( data ) {
+			var authorLine = "";
 			$.each( data.split( "\n" ), function( i, val ){
 				if( /^From:/.test( val ) ){
+					authorLine = val;
+					record = true;
+				} else  if( record === true && /^\s/.test( val ) ) {
+					authorLine += val;
+				} else if( record === true ) {
 					var author = {},
-						parts = val.split( " " ),
+						parts = authorLine.split( " " ),
 						length = parts.length;
 
 					author.email = parts[ length -1 ].replace( /<|>/g, "" );
@@ -24,16 +31,17 @@ asyncTest( "Fetched .patch file", function(){
 					parts.splice( length - 2, 1);
 					author.name = mimefuncs.quotedPrintableDecode( mimefuncs.mimeWordsDecode( parts.join( " " ) ) );
 					authors.push( author );
+					record = false;
 				}
 			});
 			if( authors.length > 0 ){
 				ok( true, authors.length + " Authors Found" );
 				start();
 				checkAuthors();
-				if( localStorage[ "checkCommit" ] === "true" ) {
+				if( localStorage[ "checkCommit" ] === "true" || localStorage[ "checkCommit" ] === undefined ) {
 					checkCommits( data );
 				}
-				if( localStorage[ "checkLines" ] === "true" ) {
+				if( localStorage[ "checkLines" ] === "true" || localStorage[ "checkCommit" ] === undefined ) {
 					checkLineLength( data );
 				}
 			}
