@@ -1,12 +1,12 @@
 jquery-pr
 =================
 
-an extension for chrome to check jquery foundation PR's for cla/caa signitures commit message format and line lengths
+an extension for chrome to check jquery foundation PR's for cla/caa signatures, commit message format and line lengths
 
 Usage
 -----------------
 
-To use go to any PR on github and click the PR button in your browser bar a window will popup and run
+To use, go to any PR on github and click the PR button in your browser bar. A window will popup and run
 tests and display results of each.
 
 **NOTE: You must be signed into google to use the cla/caa check because chrome extensions can only**
@@ -15,38 +15,38 @@ tests and display results of each.
 Options
 -----------------
 
-You can access the options page via the chrome extensions page under jquery-pr just click
+You can access the options page via the chrome extensions page. Under jquery-pr just click
 options at the bottom
 
-There are currently two configureable options
+There are currently two configurable options
 
 #### **Check commit message format**:
 
-determins if the commit message format should be checked
+determines if the commit message format should be checked
 
 #### **Check line lengths**:
 
-Check each line modified in a js file to ensure its under 100chars
+Checks each line modified in a js file to ensure that it's under 100 chars
 
-Instalation
+Installation
 -----------------
 
-to install the extension and use it you can download the latest stable packed version from
+To install the extension and use it, you can download the latest stable packed version from
 http://uglymongrel.com/download/jquery-pr.crx ( you must right click and save file )
 
-once downloaded simply drag onto the extensions page in chrome settings.
+Once downloaded, simply drag onto the extensions page in chrome settings.
 
 Development
 -----------------
 
-This extension is just simple js css and html to instal the extension for development
+This extension is just simple js css and html. To instal the extension for development
 
-1.) Go to the setting page in chrome and go to the extensions section.
+1.) Go to the settings page in chrome and go to the extensions section.
 
 2.) check the developer mode checkbox
 
 3.) click load unpacked extension and select the folder for jquery-pr
 
-changes to js,css,html files will show as soon as the files is saved
+changes to js, css, html files will show as soon as the file is saved
 changes to images or manifest will require the extension to be reloaded
-to test a packed version simply click pack extension and select the jquery-pr folder
+to test a packed version, simply click pack extension and select the jquery-pr folder
