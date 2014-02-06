@@ -10,6 +10,9 @@
     "https://docs.google.com/",
     "tabs"
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "options_page": "options.html",
   "icons": {
     "16": "images/pr-icon-16.png",
@@ -17,7 +20,7 @@
     "128": "images/pr-icon-128.png"
   },
   "content_security_policy": "script-src 'self' https://spreadsheets.google.com; object-src 'self'",
-  "browser_action": {
+  "page_action": {
     "default_icon": "images/pr.png",
     "default_popup": "index.html"
   }
