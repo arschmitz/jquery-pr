@@ -36,16 +36,20 @@ http://uglymongrel.com/download/jquery-pr.crx ( you must right click and save fi
 
 Once downloaded, simply drag onto the extensions page in chrome settings.
 
+alternatively to use git pull to do updates just install as instructed below for development 
+
 Development
 -----------------
 
 This extension is just simple js css and html. To instal the extension for development
 
-1.) Go to the settings page in chrome and go to the extensions section.
+1.) Clone this repo
 
-2.) check the developer mode checkbox
+2.) Go to the settings page in chrome and go to the extensions section.
 
-3.) click load unpacked extension and select the folder for jquery-pr
+3.) check the developer mode checkbox
+
+4.) click load unpacked extension and select the folder for jquery-pr repo
 
 changes to js, css, html files will show as soon as the file is saved
 changes to images or manifest will require the extension to be reloaded
