@@ -7,10 +7,6 @@ var authors = [],
 asyncTest( "Fetched .patch file", function(){
 	expect( 1 );
 	chrome.tabs.getSelected( null, function( tab ) {
-		if( !/https:\/\/github.com\/jquery\/[^\/]+\/pull\//.test( tab.url ) ) {
-			ok( false, "This tool only works on PR's for jquery foundation repos on github" );
-			start();
-		}
 		var url = tab.url.replace( /\/files$|\/commits$/, "" ),
 			record = false;
 		$.get( url + ".patch", function( data ) {
@@ -264,13 +260,17 @@ function checkLineLength( patch ) {
 	if( Object.keys( files ).length > 0 ) {
 		$.each( files, function( fileName, lines ){
 			test( "file " + fileName + " lines less then 100 characters", function(){
-				$.each( lines, function( i, line ){
-					var tabCount = line.match( /\t/g ).length,
-						length;
-
-					length = line.length + ( tabCount * 3 );
-					ok( length < 100, line );
-				});
+				console.log( lines );
+				if( lines.length > 0 ){
+					$.each( lines, function( i, line ){
+						var tabCount = line.match( /\t/g ).length,
+							length;
+						length = line.length + ( tabCount * 3 );
+						ok( length < 100, line );
+					});
+				} else {
+					ok( true, "blank line" );
+				}
 			});
 		});
 	}
