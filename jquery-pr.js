@@ -7,8 +7,9 @@ var authors = [],
 asyncTest( "Fetched .patch file", function(){
 	expect( 1 );
 	chrome.tabs.getSelected( null, function( tab ) {
-		var url = tab.url.replace( /\/files$|\/commits$/, "" ),
+		var url = tab.url.match(/https:\/\/github\.com\/jquery\/[^\/]+\/pull\/\d+/),
 			record = false;
+
 		$.get( url + ".patch", function( data ) {
 			var authorLine = "";
 			$.each( data.split( "\n" ), function( i, val ){
