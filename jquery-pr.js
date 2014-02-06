@@ -160,7 +160,7 @@ function getCommitMessages( patch ){
 			}
 			commit = line;
 			record = true;
-		} else if( captureSecond && record && !/^---/.test( line ) ) {
+		} else if( captureSecond && /^\s/.test( line ) && record && !/^---/.test( line ) ) {
 			commit += line;
 			captureSecond = false;
 		} else if( record && !/^---/.test( line ) ) {
