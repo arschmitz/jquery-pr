@@ -138,13 +138,13 @@ function checkConfirmation ( sheet ) {
 }
 function checkAuthors() {
 	$.each( authors, function( index, author ){
-		asyncTest( "Commit " + ( index + 1 ) + " Author Valid", function(){
+		asyncTest( "Commit " + ( index + 1 ) + " " + author.name + " <" + author.email + ">", function(){
 			ok( validEmail( author.email ), "Email is Valid  ( " + author.email + " )" );
 			if ( validEmail( author.email ) ) {
 				expect( 4 );
 				fetchSpreadsheet( author, claAddress );
 			} else {
-				ok( validName( author.name ), "Name is at least 2 parts ( " + author.name + " )" );
+				ok( false, "Name is at least 2 parts ( " + author.name + " )" );
 				expect( 2 );
 				start();
 			}
