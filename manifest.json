@@ -3,7 +3,7 @@
 
   "name": "jQuery PR Checker",
   "description": "This extension will check the jQuery foundation cla/caa for matching author info from any github PR. Plus it will check the commit message format and the lengths of any lines changed in a .js file",
-  "version": "0.0.6",
+  "version": "0.0.7",
 
   "permissions": [
     "https://github.com/",
