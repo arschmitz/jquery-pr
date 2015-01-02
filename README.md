@@ -31,16 +31,6 @@ Checks each line modified in a js file to ensure that it's under 100 chars
 Installation
 -----------------
 
-To install the extension and use it, you can download the latest stable packed version from
-http://uglymongrel.com/download/jquery-pr.crx ( you must right click and save file )
-
-Once downloaded, simply drag onto the extensions page in chrome settings.
-
-alternatively to use git pull to do updates just install as instructed below for development 
-
-Development
------------------
-
 This extension is just simple js css and html. To instal the extension for development
 
 1.) Clone this repo
